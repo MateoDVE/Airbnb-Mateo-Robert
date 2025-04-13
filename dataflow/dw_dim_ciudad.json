@@ -1,5 +1,5 @@
 {
-	"name": "dw_dim_dia",
+	"name": "dw_dim_ciudad",
 	"properties": {
 		"folder": {
 			"name": "DW"
@@ -18,7 +18,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "dim_dia",
+						"referenceName": "dim_ciudad",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
@@ -31,18 +31,22 @@
 			],
 			"scriptLines": [
 				"source(output(",
-				"          Day as string",
+				"          City as string,",
+				"          City_Center_Km as decimal(5,3),",
+				"          Metro_Distance_Km as decimal(5,3)",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     query: 'SELECT DISTINCT Day FROM [dbo].[airbnb_data]',",
+				"     query: 'SELECT DISTINCT City,City_Center_Km, Metro_Distance_Km FROM [dbo].[airbnb_data]',",
 				"     format: 'query') ~> source1",
-				"source1 sort(asc(Day, true)) ~> sort1",
+				"source1 sort(asc(City, true)) ~> sort1",
 				"sort1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
-				"          dia as string",
+				"          City as string,",
+				"          CityCenterKm as decimal(10,2),",
+				"          MetroDistanceKm as decimal(10,2)",
 				"     ),",
 				"     deletable:false,",
 				"     insertable:true,",
@@ -53,7 +57,9 @@
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
-				"          dia = Day",
+				"          City,",
+				"          CityCenterKm = City_Center_Km,",
+				"          MetroDistanceKm = Metro_Distance_Km",
 				"     )) ~> sink1"
 			]
 		}

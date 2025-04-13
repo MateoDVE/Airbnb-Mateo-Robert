@@ -1,5 +1,5 @@
 {
-	"name": "dw_dim_dia",
+	"name": "dim_tipo_habitacion",
 	"properties": {
 		"folder": {
 			"name": "DW"
@@ -18,7 +18,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "dim_dia",
+						"referenceName": "dim_tipo_habitacion",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
@@ -31,18 +31,22 @@
 			],
 			"scriptLines": [
 				"source(output(",
-				"          Day as string",
+				"          Room_Type as string,",
+				"          Shared_Room as string,",
+				"          Private_Room as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     query: 'SELECT DISTINCT Day FROM [dbo].[airbnb_data]',",
+				"     query: 'SELECT DISTINCT Room_Type, Shared_Room, Private_Room FROM [dbo].[airbnb_data]',",
 				"     format: 'query') ~> source1",
-				"source1 sort(asc(Day, true)) ~> sort1",
+				"source1 sort(asc(Room_Type, true)) ~> sort1",
 				"sort1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
-				"          dia as string",
+				"          RoomType as string,",
+				"          SharedRoom as string,",
+				"          PrivateRoom as string",
 				"     ),",
 				"     deletable:false,",
 				"     insertable:true,",
@@ -53,7 +57,9 @@
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
-				"          dia = Day",
+				"          RoomType = Room_Type,",
+				"          SharedRoom = Shared_Room,",
+				"          PrivateRoom = Private_Room",
 				"     )) ~> sink1"
 			]
 		}
