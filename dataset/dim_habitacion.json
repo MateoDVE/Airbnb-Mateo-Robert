@@ -1,0 +1,49 @@
+{
+	"name": "dim_habitacion",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "airbnb_dw",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DW"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id_habitacion",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "tipo",
+				"type": "varchar"
+			},
+			{
+				"name": "shared_room",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "private_room",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "capacidad",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "dormitorios",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "dim_habitacion"
+		}
+	}
+}

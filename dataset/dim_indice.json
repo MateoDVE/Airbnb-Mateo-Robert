@@ -1,0 +1,61 @@
+{
+	"name": "dim_indice",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "airbnb_dw",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DW"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id_indice",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "limpieza",
+				"type": "decimal",
+				"precision": 3,
+				"scale": 1
+			},
+			{
+				"name": "satisfaccion",
+				"type": "decimal",
+				"precision": 3,
+				"scale": 1
+			},
+			{
+				"name": "indice_atraccion",
+				"type": "decimal",
+				"precision": 6,
+				"scale": 1
+			},
+			{
+				"name": "indice_atraccion_normalizado",
+				"type": "decimal",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "indice_restaurante",
+				"type": "decimal",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "indice_restaurante_normalizado",
+				"type": "decimal",
+				"precision": 6,
+				"scale": 2
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "dim_indice"
+		}
+	}
+}

@@ -1,0 +1,37 @@
+{
+	"name": "dim_localizacion",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "airbnb_dw",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DW"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id_localizacion",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "distancia_centro",
+				"type": "decimal",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "distancia_metro",
+				"type": "decimal",
+				"precision": 6,
+				"scale": 2
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "dim_localizacion"
+		}
+	}
+}
