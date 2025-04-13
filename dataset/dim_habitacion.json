@@ -1,5 +1,5 @@
 {
-	"name": "dim_anfitrion",
+	"name": "dim_habitacion",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "airbnb_dw",
@@ -12,26 +12,36 @@
 		"type": "AzureSqlTable",
 		"schema": [
 			{
-				"name": "id_anfitrion",
+				"name": "id_habitacion",
 				"type": "int",
 				"precision": 10
 			},
 			{
-				"name": "superhost",
+				"name": "tipo",
 				"type": "varchar"
 			},
 			{
-				"name": "multiple_rooms",
+				"name": "shared_room",
 				"type": "varchar"
 			},
 			{
-				"name": "business",
+				"name": "private_room",
 				"type": "varchar"
+			},
+			{
+				"name": "capacidad",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "dormitorios",
+				"type": "int",
+				"precision": 10
 			}
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "dim_anfitrion"
+			"table": "dim_habitacion"
 		}
 	}
 }

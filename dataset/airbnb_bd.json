@@ -1,0 +1,117 @@
+{
+	"name": "airbnb_bd",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "airbnb_bd",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "BD"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "City",
+				"type": "varchar"
+			},
+			{
+				"name": "Price",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "Day",
+				"type": "varchar"
+			},
+			{
+				"name": "Room_Type",
+				"type": "varchar"
+			},
+			{
+				"name": "Shared_Room",
+				"type": "varchar"
+			},
+			{
+				"name": "Private_Room",
+				"type": "varchar"
+			},
+			{
+				"name": "Person_Capacity",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Superhost",
+				"type": "varchar"
+			},
+			{
+				"name": "Multiple_Rooms",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Business",
+				"type": "varchar"
+			},
+			{
+				"name": "Cleanliness_Rating",
+				"type": "decimal",
+				"precision": 3,
+				"scale": 1
+			},
+			{
+				"name": "Guest_Satisfaction",
+				"type": "decimal",
+				"precision": 3,
+				"scale": 1
+			},
+			{
+				"name": "Bedrooms",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "City_Center_km",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 3
+			},
+			{
+				"name": "Metro_Distance_km",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 3
+			},
+			{
+				"name": "Attraction_Index",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 6
+			},
+			{
+				"name": "Normalised_Attraction_Index",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 6
+			},
+			{
+				"name": "Restraunt_Index",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 6
+			},
+			{
+				"name": "Normalised_Restraunt_Index",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 6
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "airbnb_data"
+		}
+	}
+}
