@@ -27,6 +27,9 @@
 			"transformations": [
 				{
 					"name": "sort1"
+				},
+				{
+					"name": "aggregate1"
 				}
 			],
 			"scriptLines": [
@@ -41,7 +44,9 @@
 				"     query: 'SELECT DISTINCT City,City_Center_Km, Metro_Distance_Km FROM [dbo].[airbnb_data]',",
 				"     format: 'query') ~> source1",
 				"source1 sort(asc(City, true)) ~> sort1",
-				"sort1 sink(allowSchemaDrift: true,",
+				"sort1 aggregate(groupBy(City),",
+				"     each(match(name != \"City\"), $$ = first($$))) ~> aggregate1",
+				"aggregate1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
 				"          City as string,",
