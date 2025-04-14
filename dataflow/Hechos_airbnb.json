@@ -24,7 +24,11 @@
 					"name": "sink1"
 				}
 			],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "aggregate1"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          City as string,",
@@ -41,7 +45,9 @@
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     query: 'SELECT City, Room_Type, Day, Price, Person_Capacity, Cleanliness_Rating, Guest_Satisfaction, Bedrooms FROM [dbo].[airbnb_data]',",
 				"     format: 'query') ~> source1",
-				"source1 sink(allowSchemaDrift: true,",
+				"source1 aggregate(groupBy(City),",
+				"     each(match(name != \"City\"), $$ = first($$))) ~> aggregate1",
+				"aggregate1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
 				"          City as string,",

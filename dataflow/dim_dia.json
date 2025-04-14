@@ -1,5 +1,5 @@
 {
-	"name": "dw_dim_dia",
+	"name": "dim_dia",
 	"properties": {
 		"folder": {
 			"name": "DW"
@@ -27,9 +27,6 @@
 			"transformations": [
 				{
 					"name": "sort1"
-				},
-				{
-					"name": "aggregate1"
 				}
 			],
 			"scriptLines": [
@@ -42,9 +39,7 @@
 				"     query: 'SELECT DISTINCT Day FROM [dbo].[airbnb_data]',",
 				"     format: 'query') ~> source1",
 				"source1 sort(asc(Day, true)) ~> sort1",
-				"sort1 aggregate(groupBy(Day),",
-				"     each(match(name != \"Day\"), $$ = first($$))) ~> aggregate1",
-				"aggregate1 sink(allowSchemaDrift: true,",
+				"sort1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
 				"          dia as string",

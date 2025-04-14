@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "dw_dim_dia",
+						"referenceName": "dim_dia",
 						"type": "DataFlowReference"
 					},
 					"compute": {
